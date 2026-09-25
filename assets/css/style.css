@@ -111,15 +111,9 @@ body.menu-open .floating-cta {
 /* ===== HEADER ===== */
 .site-header {
     background: #fff;
-    position: sticky;
-    top: 0;
+    position: relative;
     z-index: 500;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
-    transition: transform .28s ease;
-}
-
-.site-header.is-hidden {
-    transform: translateY(-110%);
 }
 
 .header-inner {
@@ -1529,7 +1523,7 @@ body.menu-open .floating-cta {
     .lp-pc-cta {
         display: flex;
         position: sticky;
-        top: 88px;
+        top: 24px;
         flex-direction: column;
         align-items: stretch;
         justify-content: flex-start;

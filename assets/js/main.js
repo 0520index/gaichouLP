@@ -3,7 +3,6 @@ const hamburger = document.getElementById('hamburger');
 const mobileMenu = document.getElementById('mobileMenu');
 const menuOverlay = document.getElementById('menuOverlay');
 const menuClose = document.getElementById('menuClose');
-const siteHeader = document.querySelector('.site-header');
 const floatingCta = document.querySelector('.floating-cta');
 
 function openMenu() {
@@ -75,7 +74,7 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
   });
 });
 
-// Hide header / floating CTA on scroll down (SP), show on scroll up
+// Hide floating CTA on scroll down (SP), show on scroll up
 (function () {
   const mq = window.matchMedia('(max-width: 768px)');
   let lastY = window.scrollY || 0;
@@ -84,16 +83,10 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
   const SHOW_TOP = 40;
 
   function setHidden(hidden) {
-    if (!mq.matches) {
-      siteHeader?.classList.remove('is-hidden');
+    if (!mq.matches || document.body.classList.contains('menu-open')) {
       floatingCta?.classList.remove('is-hidden');
       return;
     }
-    if (document.body.classList.contains('menu-open')) {
-      siteHeader?.classList.remove('is-hidden');
-      return;
-    }
-    siteHeader?.classList.toggle('is-hidden', hidden);
     floatingCta?.classList.toggle('is-hidden', hidden);
   }
 
