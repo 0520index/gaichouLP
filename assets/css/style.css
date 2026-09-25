@@ -7,16 +7,18 @@
 }
 
 :root {
-    --red: #e31e24;
-    --dark-red: #b51519;
-    --blue: #1a56a0;
-    --dark-blue: #0f3d7a;
-    --green: #1a8a4a;
-    --dark-green: #126535;
-    --gold: #d4a017;
-    --text: #1a1a1a;
+    --red: #e60012;
+    --dark-red: #c40010;
+    --blue: #0055a5;
+    --dark-blue: #003f7d;
+    --green: #008c45;
+    --dark-green: #006b35;
+    --gold: #ffd400;
+    --yellow: #ffe100;
+    --text: #222;
     --gray: #f5f5f5;
     --border: #ddd;
+    --lp-width: 750px;
 }
 
 html {
@@ -28,6 +30,7 @@ body {
     color: var(--text);
     line-height: 1.6;
     font-size: 15px;
+    background: #e8e8e8;
 }
 
 a {
@@ -67,14 +70,15 @@ body.menu-open .floating-cta {
 
 .floating-cta-top {
     background: var(--red);
-    padding: 10px 16px;
+    padding: 12px 16px;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 10px;
     color: #fff;
-    font-size: 17px;
+    font-size: 18px;
     font-weight: 900;
+    border-top: 3px solid var(--yellow);
 }
 
 .floating-cta-top svg {
@@ -113,7 +117,25 @@ body.menu-open .floating-cta {
     background: #fff;
     position: relative;
     z-index: 500;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+    border-bottom: 3px solid var(--yellow);
+    box-shadow: none;
+}
+
+/* キャンペーン帯 */
+.campaign-bar {
+    background: var(--blue);
+    color: #fff;
+    text-align: center;
+    padding: 10px 12px;
+    font-size: clamp(12px, 3.2vw, 14px);
+    font-weight: 700;
+    line-height: 1.5;
+}
+
+.campaign-bar em {
+    font-style: normal;
+    color: var(--yellow);
+    font-size: 1.15em;
 }
 
 .header-inner {
@@ -164,8 +186,9 @@ body.menu-open .floating-cta {
     background: var(--red);
     color: #fff;
     padding: 8px 16px;
-    border-radius: 30px;
+    border-radius: 6px;
     font-size: 15px;
+    box-shadow: 0 3px 0 var(--dark-red);
 }
 
 .pc-nav .nav-tel:hover {
@@ -326,52 +349,37 @@ body.menu-open .floating-cta {
     color: #cce;
 }
 
-/* ===== LP VISUAL RAIL（スマホファースト画像カラム） =====
-   以降の追加例:
-   <section class="section-visual" id="...">
-     <header class="visual-heading">...</header>
-     <div class="section-visual-media"><img ...></div>
-   </section>
-*/
+/* ===== LP VISUAL RAIL（広告LP：1カラム連続） ===== */
 .lp-stage {
-    --lp-sky: #e8f4fb;
-    --lp-sky-deep: #d4ebf7;
-    --lp-panel: #f7fbfe;
-    --lp-frame: rgba(26, 86, 160, 0.12);
     width: 100%;
-    background:
-        radial-gradient(ellipse 90% 35% at 50% 0%, rgba(255, 255, 255, 0.7), transparent 60%),
-        linear-gradient(180deg, var(--lp-sky-deep) 0%, var(--lp-sky) 28%, #eef6fb 70%, #f3f8fb 100%);
+    background: #e8e8e8;
 }
 
 .lp-visual-rail {
     width: 100%;
-    max-width: 480px;
+    max-width: var(--lp-width);
     margin: 0 auto;
-    padding: 0 12px 8px;
-    background: transparent;
+    padding: 0;
+    background: #fff;
 }
 
 .section-visual {
     width: 100%;
-    margin: 0 0 24px;
+    margin: 0;
     padding: 0;
-    background: var(--lp-panel);
-    border: 1px solid var(--lp-frame);
-    border-radius: 14px;
-    overflow: hidden;
-    box-shadow:
-        0 1px 0 rgba(255, 255, 255, 0.8) inset,
-        0 10px 28px rgba(15, 61, 122, 0.07);
+    background: #fff;
+    border: none;
+    border-radius: 0;
+    overflow: visible;
+    box-shadow: none;
 }
 
 .section-visual--flush {
-    margin: 0 -12px 20px;
-    width: calc(100% + 24px);
-    max-width: none;
+    margin: 0;
+    width: 100%;
     border: none;
     border-radius: 0;
-    background: transparent;
+    background: #fff;
     box-shadow: none;
 }
 
@@ -383,48 +391,29 @@ body.menu-open .floating-cta {
 
 .visual-heading {
     text-align: center;
-    padding: 32px 18px 24px;
-    background:
-        linear-gradient(180deg, #f2f8fc 0%, #ffffff 72%);
+    padding: 28px 16px 20px;
+    background: #fff;
     position: relative;
 }
 
-.visual-heading::before {
-    content: '';
-    display: block;
-    width: 36px;
-    height: 3px;
-    margin: 0 auto 14px;
-    border-radius: 2px;
-    background: linear-gradient(90deg, var(--blue), #2ea86a);
-}
-
+.visual-heading::before,
 .visual-heading::after {
-    content: '';
-    position: absolute;
-    left: 16px;
-    right: 16px;
-    bottom: 0;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(26, 86, 160, 0.14), transparent);
+    display: none;
 }
 
 .visual-heading .en {
-    display: block;
-    font-size: 11px;
-    letter-spacing: .2em;
-    color: var(--blue);
-    font-weight: 700;
-    text-transform: uppercase;
-    margin-bottom: 8px;
-    line-height: 1.4;
+    display: none;
 }
 
 .visual-heading h2 {
-    font-size: clamp(20px, 5.2vw, 26px);
+    font-size: clamp(22px, 5.5vw, 30px);
     font-weight: 900;
-    line-height: 1.4;
+    line-height: 1.35;
     color: var(--text);
+    display: inline;
+    background: linear-gradient(transparent 62%, var(--yellow) 62%);
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
 }
 
 .visual-heading h2 em {
@@ -433,24 +422,66 @@ body.menu-open .floating-cta {
 }
 
 .visual-heading p {
-    margin-top: 10px;
-    font-size: 13px;
-    color: #5a6b7a;
+    margin-top: 12px;
+    font-size: 14px;
+    color: #444;
     line-height: 1.6;
+    font-weight: 700;
 }
 
 .section-visual-media {
     width: 100%;
     line-height: 0;
     background: #fff;
-    /* 画像端の白／空とパネルをなじませる */
-    box-shadow: 0 -12px 20px -16px rgba(15, 61, 122, 0.08) inset;
+    box-shadow: none;
 }
 
 .section-visual-media img {
     width: 100%;
     height: auto;
     display: block;
+}
+
+.section-visual > .section-inner {
+    max-width: none;
+    padding: 24px 16px 32px;
+    background: #fff;
+}
+
+/* セクション間の煽りCTA帯 */
+.ad-band {
+    background: linear-gradient(90deg, #fff3b0, var(--yellow) 40%, #fff3b0);
+    text-align: center;
+    padding: 18px 14px;
+    border-top: 3px solid var(--red);
+    border-bottom: 3px solid var(--red);
+}
+
+.ad-band p {
+    font-size: clamp(15px, 4vw, 18px);
+    font-weight: 900;
+    line-height: 1.45;
+    margin-bottom: 12px;
+    color: var(--text);
+}
+
+.ad-band p em {
+    font-style: normal;
+    color: var(--red);
+    background: #fff;
+    padding: 0 4px;
+}
+
+.ad-band .btn-main {
+    font-size: 16px;
+    padding: 14px 28px;
+    border-radius: 8px;
+    box-shadow: 0 4px 0 var(--dark-red);
+}
+
+.ad-band .btn-main:hover {
+    transform: translateY(1px);
+    box-shadow: 0 3px 0 var(--dark-red);
 }
 
 /* PCのみ：画像カラム横に追従CTA */
@@ -460,41 +491,45 @@ body.menu-open .floating-cta {
 
 .lp-pc-cta .cta-tagline {
     font-size: 13px;
-    letter-spacing: .1em;
+    letter-spacing: .05em;
     margin-bottom: 8px;
-    opacity: .85;
+    font-weight: 700;
+    background: var(--yellow);
+    color: var(--text);
+    display: inline-block;
+    padding: 4px 10px;
 }
 
 .lp-pc-cta .cta-heading {
-    font-size: clamp(22px, 2.2vw, 32px);
+    font-size: clamp(20px, 2vw, 28px);
     font-weight: 900;
     line-height: 1.35;
-    margin-bottom: 12px;
+    margin: 14px 0 12px;
 }
 
 .lp-pc-cta .cta-heading em {
     font-style: normal;
-    color: #ffe566;
+    color: var(--yellow);
 }
 
 .lp-pc-cta .cta-sub {
-    font-size: 14px;
-    margin-bottom: 20px;
-    opacity: .9;
+    font-size: 13px;
+    margin-bottom: 18px;
+    opacity: .95;
 }
 
 .lp-pc-cta .cta-badges {
     display: flex;
     flex-direction: column;
     gap: 8px;
-    margin-bottom: 22px;
+    margin-bottom: 20px;
 }
 
 .lp-pc-cta .badge {
     background: rgba(255, 255, 255, 0.12);
-    border: 1px solid rgba(255, 255, 255, 0.35);
-    border-radius: 8px;
-    padding: 10px 14px;
+    border: 2px solid var(--yellow);
+    border-radius: 6px;
+    padding: 10px 12px;
     font-size: 13px;
     font-weight: 700;
     line-height: 1.4;
@@ -502,21 +537,23 @@ body.menu-open .floating-cta {
 
 .lp-pc-cta .badge strong {
     display: block;
-    font-size: 20px;
+    font-size: 22px;
     margin-top: 2px;
+    color: var(--yellow);
 }
 
 .lp-pc-cta .btn-main {
     width: 100%;
     justify-content: center;
-    font-size: 17px;
-    padding: 16px 20px;
+    font-size: 16px;
+    padding: 16px 18px;
+    border-radius: 8px;
 }
 
 .lp-pc-cta .cta-tel-note {
     margin-top: 12px;
     font-size: 12px;
-    opacity: .75;
+    opacity: .85;
 }
 
 .btn-main {
@@ -525,48 +562,47 @@ body.menu-open .floating-cta {
     gap: 10px;
     background: var(--red);
     color: #fff;
-    padding: 18px 36px;
-    border-radius: 50px;
-    font-size: 20px;
+    padding: 16px 32px;
+    border-radius: 8px;
+    font-size: 18px;
     font-weight: 900;
-    box-shadow: 0 6px 20px rgba(227, 30, 36, 0.4);
-    transition: transform .2s, box-shadow .2s;
+    box-shadow: 0 4px 0 var(--dark-red);
+    transition: transform .15s, box-shadow .15s;
 }
 
 .btn-main:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 10px 28px rgba(227, 30, 36, 0.5);
+    transform: translateY(1px);
+    box-shadow: 0 3px 0 var(--dark-red);
 }
 
 /* ===== SECTION COMMON ===== */
 .section {
-    padding: 60px 20px;
+    padding: 48px 16px;
+    background: #fff;
 }
 
 .section-inner {
-    max-width: 1100px;
+    max-width: var(--lp-width);
     margin: 0 auto;
 }
 
 .section-title {
     text-align: center;
-    margin-bottom: 40px;
+    margin-bottom: 28px;
 }
 
 .section-title .en {
-    font-size: 11px;
-    letter-spacing: .2em;
-    color: var(--blue);
-    font-weight: 700;
-    text-transform: uppercase;
-    display: block;
-    margin-bottom: 6px;
+    display: none;
 }
 
 .section-title h2 {
-    font-size: clamp(22px, 4vw, 34px);
+    font-size: clamp(22px, 5vw, 30px);
     font-weight: 900;
     line-height: 1.35;
+    display: inline;
+    background: linear-gradient(transparent 62%, var(--yellow) 62%);
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
 }
 
 .section-title h2 em {
@@ -576,8 +612,9 @@ body.menu-open .floating-cta {
 
 .section-title p {
     margin-top: 10px;
-    color: #555;
+    color: #444;
     font-size: 14px;
+    font-weight: 700;
 }
 
 /* ===== CONCERNS ===== */
@@ -1454,70 +1491,47 @@ body.menu-open .floating-cta {
 }
 
 @media (min-width: 769px) {
-
-    /* 画像カラムを中央に置き、横に追従CTA。枠・背景でセクションをなじませる */
+    /* 中央1カラム + 右に追従電話枠（広告LP） */
     .lp-stage {
         display: grid;
-        grid-template-columns: minmax(0, 1fr) minmax(280px, 340px);
-        gap: 40px;
+        grid-template-columns: minmax(0, var(--lp-width)) 280px;
+        gap: 24px;
         align-items: start;
-        max-width: 980px;
+        justify-content: center;
+        max-width: calc(var(--lp-width) + 280px + 24px + 48px);
         margin: 0 auto;
-        padding: 28px 32px 48px;
-        background:
-            radial-gradient(ellipse 70% 45% at 28% 6%, rgba(255, 255, 255, 0.55), transparent 55%),
-            linear-gradient(180deg, var(--lp-sky-deep) 0%, var(--lp-sky) 35%, #eef6fb 100%);
+        padding: 24px 24px 40px;
+        background: #e8e8e8;
     }
 
     .lp-visual-rail {
-        max-width: 480px;
+        max-width: var(--lp-width);
         width: 100%;
-        margin: 0 0 0 auto;
-        padding: 0;
+        margin: 0;
+        box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.06);
     }
 
-    .section-visual {
-        margin-bottom: 36px;
-        border-radius: 16px;
-        border-color: rgba(26, 86, 160, 0.1);
-        box-shadow:
-            0 1px 0 rgba(255, 255, 255, 0.9) inset,
-            0 14px 36px rgba(15, 61, 122, 0.09);
-    }
-
+    .section-visual,
     .section-visual--flush {
-        margin: 0 0 36px;
-        width: 100%;
-        border-radius: 16px;
-        border: 1px solid rgba(26, 86, 160, 0.1);
-        overflow: hidden;
+        margin-bottom: 0;
+        border-radius: 0;
+        border: none;
+        box-shadow: none;
+        overflow: visible;
         background: #fff;
-        box-shadow:
-            0 1px 0 rgba(255, 255, 255, 0.9) inset,
-            0 14px 36px rgba(15, 61, 122, 0.09);
     }
 
     .visual-heading {
-        padding: 40px 28px 30px;
-        background: linear-gradient(180deg, #eef6fb 0%, #ffffff 78%);
-    }
-
-    .visual-heading::before {
-        width: 44px;
-        margin-bottom: 16px;
-    }
-
-    .visual-heading::after {
-        left: 28px;
-        right: 28px;
+        padding: 36px 24px 24px;
+        background: #fff;
     }
 
     .visual-heading h2 {
-        font-size: 28px;
+        font-size: 30px;
     }
 
     .visual-heading p {
-        font-size: 14px;
+        font-size: 15px;
     }
 
     .lp-pc-cta {
@@ -1527,25 +1541,25 @@ body.menu-open .floating-cta {
         flex-direction: column;
         align-items: stretch;
         justify-content: flex-start;
-        background: linear-gradient(160deg, #1a56a0 0%, #0f3d7a 100%);
+        background: var(--blue);
         color: #fff;
-        padding: 28px 22px;
-        border-radius: 16px;
+        padding: 22px 18px;
+        border-radius: 0;
         text-align: center;
-        border: 1px solid rgba(255, 255, 255, 0.12);
-        box-shadow: 0 16px 40px rgba(15, 61, 122, 0.2);
+        border: 4px solid var(--yellow);
+        box-shadow: 0 8px 0 rgba(0, 0, 0, 0.15);
     }
 }
 
 @media (min-width: 1100px) {
     .lp-stage {
-        grid-template-columns: minmax(0, 1fr) minmax(300px, 360px);
-        max-width: 1080px;
-        gap: 48px;
+        grid-template-columns: minmax(0, var(--lp-width)) 300px;
+        max-width: calc(var(--lp-width) + 300px + 32px + 48px);
+        gap: 32px;
     }
 
     .lp-visual-rail {
-        max-width: 520px;
+        max-width: var(--lp-width);
     }
 }
 
@@ -1745,10 +1759,11 @@ body.menu-open .floating-cta {
 }
 
 .cta-banner {
-    background: linear-gradient(135deg, #1a56a0, #0f3d7a);
+    background: var(--blue);
     color: #fff;
-    border-radius: 16px;
-    padding: 28px 20px;
+    border-radius: 0;
+    border: 4px solid var(--yellow);
+    padding: 24px 16px;
     text-align: center;
 }
 
@@ -1756,10 +1771,11 @@ body.menu-open .floating-cta {
     margin-bottom: 16px;
     font-size: 15px;
     line-height: 1.7;
+    font-weight: 700;
 }
 
 .cta-banner .btn-main {
-    box-shadow: none;
+    box-shadow: 0 4px 0 var(--dark-red);
 }
 
 /* ===== WORK FLOW ===== */
@@ -1774,10 +1790,10 @@ body.menu-open .floating-cta {
 }
 
 .work-step {
-    background: #f0f7ff;
-    border-radius: 16px;
-    padding: 24px;
-    border: 1px solid #d6e6f7;
+    background: #fff8dc;
+    border-radius: 0;
+    padding: 20px;
+    border: 2px solid var(--yellow);
 }
 
 .work-step-num {
@@ -1930,53 +1946,57 @@ body.menu-open .floating-cta {
 
 /* ===== MID CTA ===== */
 .mid-cta {
-    background: linear-gradient(135deg, var(--red), var(--dark-red));
-    color: #fff;
-    padding: 48px 20px;
+    background: var(--yellow);
+    color: var(--text);
+    padding: 36px 16px;
     text-align: center;
+    border-top: 4px solid var(--red);
+    border-bottom: 4px solid var(--red);
 }
 
 .mid-cta-lead {
-    font-size: clamp(20px, 4vw, 28px);
+    font-size: clamp(20px, 4vw, 26px);
     font-weight: 900;
     margin-bottom: 8px;
 }
 
 .mid-cta-sub {
     font-size: 14px;
-    opacity: .9;
-    margin-bottom: 20px;
+    font-weight: 700;
+    margin-bottom: 18px;
 }
 
 .mid-cta-btns {
     display: flex;
     flex-wrap: wrap;
-    gap: 12px;
+    gap: 10px;
     justify-content: center;
-    margin-bottom: 16px;
+    margin-bottom: 14px;
 }
 
 .mid-cta .btn-main {
-    background: #fff;
-    color: var(--red);
-    box-shadow: none;
+    background: var(--red);
+    color: #fff;
+    box-shadow: 0 4px 0 var(--dark-red);
+    border-radius: 8px;
 }
 
 .btn-outline {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 16px 28px;
-    border-radius: 50px;
-    border: 2px solid #fff;
-    color: #fff;
-    font-size: 16px;
+    padding: 14px 24px;
+    border-radius: 8px;
+    border: 3px solid var(--blue);
+    background: #fff;
+    color: var(--blue);
+    font-size: 15px;
     font-weight: 900;
 }
 
 .mid-cta-note {
     font-size: 13px;
-    opacity: .85;
+    font-weight: 700;
 }
 
 /* ===== PRICE ===== */
