@@ -339,71 +339,103 @@ body.menu-open .floating-cta {
     color: #cce;
 }
 
-/* ===== HERO SECTION ===== */
-.hero {
+/* ===== LP VISUAL RAIL（スマホファースト画像カラム） =====
+   以降の画像セクションは .lp-visual-rail 内に
+   <section class="section-visual"><img ...></section> を追加するだけでOK */
+.lp-stage {
     width: 100%;
-    background: #e8f4fb;
+    background:
+        radial-gradient(ellipse 80% 40% at 50% 0%, rgba(26, 86, 160, 0.08), transparent 55%),
+        linear-gradient(180deg, #dceef8 0%, #e8f4fb 18%, #f0f7fb 100%);
 }
 
-.hero-image-wrap {
+.lp-visual-rail {
+    width: 100%;
     max-width: 480px;
     margin: 0 auto;
+    background: #e8f4fb;
+    /* 画像同士の隙間（インライン隙間・サブピクセル）を潰す */
+    font-size: 0;
+    line-height: 0;
 }
 
-.hero-image-wrap img {
+.section-visual {
     width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.section-visual img {
+    width: 100%;
+    height: auto;
     display: block;
+    vertical-align: top;
 }
 
-/* PC用ヒーロー（SP画像の下に追加コンテンツ表示） */
-.hero-pc-cta {
+/* PCのみ：画像カラム横に追従CTA */
+.lp-pc-cta {
     display: none;
-    background: linear-gradient(135deg, #1a56a0 0%, #0f3d7a 100%);
-    color: #fff;
-    padding: 40px 20px;
-    text-align: center;
 }
 
-.hero-pc-cta .cta-tagline {
+.lp-pc-cta .cta-tagline {
     font-size: 13px;
     letter-spacing: .1em;
     margin-bottom: 8px;
     opacity: .85;
 }
 
-.hero-pc-cta .cta-heading {
-    font-size: clamp(26px, 4vw, 42px);
+.lp-pc-cta .cta-heading {
+    font-size: clamp(22px, 2.2vw, 32px);
     font-weight: 900;
-    line-height: 1.3;
+    line-height: 1.35;
     margin-bottom: 12px;
 }
 
-.hero-pc-cta .cta-sub {
-    font-size: 15px;
-    margin-bottom: 24px;
+.lp-pc-cta .cta-heading em {
+    font-style: normal;
+    color: #ffe566;
+}
+
+.lp-pc-cta .cta-sub {
+    font-size: 14px;
+    margin-bottom: 20px;
     opacity: .9;
 }
 
-.hero-pc-cta .cta-badges {
+.lp-pc-cta .cta-badges {
     display: flex;
-    gap: 12px;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin-bottom: 28px;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 22px;
 }
 
-.hero-pc-cta .badge {
-    background: rgba(255, 255, 255, 0.15);
-    border: 2px solid rgba(255, 255, 255, 0.4);
+.lp-pc-cta .badge {
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.35);
     border-radius: 8px;
-    padding: 10px 18px;
+    padding: 10px 14px;
     font-size: 13px;
     font-weight: 700;
+    line-height: 1.4;
 }
 
-.hero-pc-cta .badge strong {
+.lp-pc-cta .badge strong {
     display: block;
-    font-size: 22px;
+    font-size: 20px;
+    margin-top: 2px;
+}
+
+.lp-pc-cta .btn-main {
+    width: 100%;
+    justify-content: center;
+    font-size: 17px;
+    padding: 16px 20px;
+}
+
+.lp-pc-cta .cta-tel-note {
+    margin-top: 12px;
+    font-size: 12px;
+    opacity: .75;
 }
 
 .btn-main {
@@ -1338,29 +1370,59 @@ body.menu-open .floating-cta {
     .section {
         padding: 40px 16px;
     }
-
-    .hero-pc-cta {
-        display: none !important;
-    }
 }
 
 @media (min-width: 769px) {
-    .hero {
-        display: flex;
-        align-items: stretch;
+    /* 画像カラムを中央に置き、横に追従CTA。画像同士は1本の縦スクロールとして連続 */
+    .lp-stage {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(280px, 340px);
+        gap: 40px;
+        align-items: start;
+        max-width: 980px;
+        margin: 0 auto;
+        padding: 32px 32px 48px;
+        background:
+            radial-gradient(ellipse 70% 50% at 30% 8%, rgba(26, 86, 160, 0.1), transparent 50%),
+            linear-gradient(180deg, #d4ebf7 0%, #eaf5fb 40%, #f3f8fb 100%);
     }
 
-    .hero-image-wrap {
-        max-width: 420px;
-        flex-shrink: 0;
+    .lp-visual-rail {
+        max-width: 480px;
+        width: 100%;
+        margin: 0 0 0 auto;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow:
+            0 0 0 1px rgba(15, 61, 122, 0.06),
+            0 18px 48px rgba(15, 61, 122, 0.12);
     }
 
-    .hero-pc-cta {
+    .lp-pc-cta {
         display: flex;
-        flex: 1;
+        position: sticky;
+        top: 88px;
         flex-direction: column;
-        align-items: center;
-        justify-content: center;
+        align-items: stretch;
+        justify-content: flex-start;
+        background: linear-gradient(160deg, #1a56a0 0%, #0f3d7a 100%);
+        color: #fff;
+        padding: 28px 22px;
+        border-radius: 12px;
+        text-align: center;
+        box-shadow: 0 16px 40px rgba(15, 61, 122, 0.22);
+    }
+}
+
+@media (min-width: 1100px) {
+    .lp-stage {
+        grid-template-columns: minmax(0, 1fr) minmax(300px, 360px);
+        max-width: 1080px;
+        gap: 48px;
+    }
+
+    .lp-visual-rail {
+        max-width: 520px;
     }
 }
 
