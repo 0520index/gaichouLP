@@ -141,14 +141,7 @@ body.menu-open .floating-cta {
 
 .site-logo .logo-title-img {
     display: block;
-    height: 52px;
-    width: auto;
-    max-width: min(300px, 62vw);
-}
-
-.site-logo .logo-subtitle-img {
-    display: block;
-    height: 22px;
+    height: 47px;
     width: auto;
     max-width: min(300px, 62vw);
 }
@@ -189,24 +182,24 @@ body.menu-open .floating-cta {
 .hamburger {
     display: none;
     flex-direction: column;
-    gap: 5px;
+    gap: 4px;
     cursor: pointer;
-    padding: 8px;
+    padding: 6px;
     background: none;
     border: none;
 }
 
 .hamburger span {
     display: block;
-    width: 26px;
-    height: 3px;
+    width: 20px;
+    height: 2px;
     background: var(--text);
     border-radius: 2px;
     transition: all .3s;
 }
 
 .hamburger.open span:nth-child(1) {
-    transform: translateY(8px) rotate(45deg);
+    transform: translateY(6px) rotate(45deg);
 }
 
 .hamburger.open span:nth-child(2) {
@@ -214,7 +207,7 @@ body.menu-open .floating-cta {
 }
 
 .hamburger.open span:nth-child(3) {
-    transform: translateY(-8px) rotate(-45deg);
+    transform: translateY(-6px) rotate(-45deg);
 }
 
 /* MOBILE MENU */
@@ -340,36 +333,130 @@ body.menu-open .floating-cta {
 }
 
 /* ===== LP VISUAL RAIL（スマホファースト画像カラム） =====
-   以降の画像セクションは .lp-visual-rail 内に
-   <section class="section-visual"><img ...></section> を追加するだけでOK */
+   以降の追加例:
+   <section class="section-visual" id="...">
+     <header class="visual-heading">...</header>
+     <div class="section-visual-media"><img ...></div>
+   </section>
+*/
 .lp-stage {
+    --lp-sky: #e8f4fb;
+    --lp-sky-deep: #d4ebf7;
+    --lp-panel: #f7fbfe;
+    --lp-frame: rgba(26, 86, 160, 0.12);
     width: 100%;
     background:
-        radial-gradient(ellipse 80% 40% at 50% 0%, rgba(26, 86, 160, 0.08), transparent 55%),
-        linear-gradient(180deg, #dceef8 0%, #e8f4fb 18%, #f0f7fb 100%);
+        radial-gradient(ellipse 90% 35% at 50% 0%, rgba(255, 255, 255, 0.7), transparent 60%),
+        linear-gradient(180deg, var(--lp-sky-deep) 0%, var(--lp-sky) 28%, #eef6fb 70%, #f3f8fb 100%);
 }
 
 .lp-visual-rail {
     width: 100%;
     max-width: 480px;
     margin: 0 auto;
-    background: #e8f4fb;
-    /* 画像同士の隙間（インライン隙間・サブピクセル）を潰す */
-    font-size: 0;
-    line-height: 0;
+    padding: 0 12px 8px;
+    background: transparent;
 }
 
 .section-visual {
     width: 100%;
-    margin: 0;
+    margin: 0 0 24px;
     padding: 0;
+    background: var(--lp-panel);
+    border: 1px solid var(--lp-frame);
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow:
+        0 1px 0 rgba(255, 255, 255, 0.8) inset,
+        0 10px 28px rgba(15, 61, 122, 0.07);
 }
 
-.section-visual img {
+.section-visual--flush {
+    margin: 0 -12px 20px;
+    width: calc(100% + 24px);
+    max-width: none;
+    border: none;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+}
+
+.section-visual--flush img {
     width: 100%;
     height: auto;
     display: block;
-    vertical-align: top;
+}
+
+.visual-heading {
+    text-align: center;
+    padding: 32px 18px 24px;
+    background:
+        linear-gradient(180deg, #f2f8fc 0%, #ffffff 72%);
+    position: relative;
+}
+
+.visual-heading::before {
+    content: '';
+    display: block;
+    width: 36px;
+    height: 3px;
+    margin: 0 auto 14px;
+    border-radius: 2px;
+    background: linear-gradient(90deg, var(--blue), #2ea86a);
+}
+
+.visual-heading::after {
+    content: '';
+    position: absolute;
+    left: 16px;
+    right: 16px;
+    bottom: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(26, 86, 160, 0.14), transparent);
+}
+
+.visual-heading .en {
+    display: block;
+    font-size: 11px;
+    letter-spacing: .2em;
+    color: var(--blue);
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    line-height: 1.4;
+}
+
+.visual-heading h2 {
+    font-size: clamp(20px, 5.2vw, 26px);
+    font-weight: 900;
+    line-height: 1.4;
+    color: var(--text);
+}
+
+.visual-heading h2 em {
+    font-style: normal;
+    color: var(--red);
+}
+
+.visual-heading p {
+    margin-top: 10px;
+    font-size: 13px;
+    color: #5a6b7a;
+    line-height: 1.6;
+}
+
+.section-visual-media {
+    width: 100%;
+    line-height: 0;
+    background: #fff;
+    /* 画像端の白／空とパネルをなじませる */
+    box-shadow: 0 -12px 20px -16px rgba(15, 61, 122, 0.08) inset;
+}
+
+.section-visual-media img {
+    width: 100%;
+    height: auto;
+    display: block;
 }
 
 /* PCのみ：画像カラム横に追従CTA */
@@ -1373,7 +1460,8 @@ body.menu-open .floating-cta {
 }
 
 @media (min-width: 769px) {
-    /* 画像カラムを中央に置き、横に追従CTA。画像同士は1本の縦スクロールとして連続 */
+
+    /* 画像カラムを中央に置き、横に追従CTA。枠・背景でセクションをなじませる */
     .lp-stage {
         display: grid;
         grid-template-columns: minmax(0, 1fr) minmax(280px, 340px);
@@ -1381,21 +1469,61 @@ body.menu-open .floating-cta {
         align-items: start;
         max-width: 980px;
         margin: 0 auto;
-        padding: 32px 32px 48px;
+        padding: 28px 32px 48px;
         background:
-            radial-gradient(ellipse 70% 50% at 30% 8%, rgba(26, 86, 160, 0.1), transparent 50%),
-            linear-gradient(180deg, #d4ebf7 0%, #eaf5fb 40%, #f3f8fb 100%);
+            radial-gradient(ellipse 70% 45% at 28% 6%, rgba(255, 255, 255, 0.55), transparent 55%),
+            linear-gradient(180deg, var(--lp-sky-deep) 0%, var(--lp-sky) 35%, #eef6fb 100%);
     }
 
     .lp-visual-rail {
         max-width: 480px;
         width: 100%;
         margin: 0 0 0 auto;
-        border-radius: 12px;
-        overflow: hidden;
+        padding: 0;
+    }
+
+    .section-visual {
+        margin-bottom: 36px;
+        border-radius: 16px;
+        border-color: rgba(26, 86, 160, 0.1);
         box-shadow:
-            0 0 0 1px rgba(15, 61, 122, 0.06),
-            0 18px 48px rgba(15, 61, 122, 0.12);
+            0 1px 0 rgba(255, 255, 255, 0.9) inset,
+            0 14px 36px rgba(15, 61, 122, 0.09);
+    }
+
+    .section-visual--flush {
+        margin: 0 0 36px;
+        width: 100%;
+        border-radius: 16px;
+        border: 1px solid rgba(26, 86, 160, 0.1);
+        overflow: hidden;
+        background: #fff;
+        box-shadow:
+            0 1px 0 rgba(255, 255, 255, 0.9) inset,
+            0 14px 36px rgba(15, 61, 122, 0.09);
+    }
+
+    .visual-heading {
+        padding: 40px 28px 30px;
+        background: linear-gradient(180deg, #eef6fb 0%, #ffffff 78%);
+    }
+
+    .visual-heading::before {
+        width: 44px;
+        margin-bottom: 16px;
+    }
+
+    .visual-heading::after {
+        left: 28px;
+        right: 28px;
+    }
+
+    .visual-heading h2 {
+        font-size: 28px;
+    }
+
+    .visual-heading p {
+        font-size: 14px;
     }
 
     .lp-pc-cta {
@@ -1408,9 +1536,10 @@ body.menu-open .floating-cta {
         background: linear-gradient(160deg, #1a56a0 0%, #0f3d7a 100%);
         color: #fff;
         padding: 28px 22px;
-        border-radius: 12px;
+        border-radius: 16px;
         text-align: center;
-        box-shadow: 0 16px 40px rgba(15, 61, 122, 0.22);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        box-shadow: 0 16px 40px rgba(15, 61, 122, 0.2);
     }
 }
 
