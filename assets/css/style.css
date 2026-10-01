@@ -15,6 +15,7 @@
     --dark-green: #006b35;
     --gold: #ffd400;
     --yellow: #ffe100;
+    --light-blue: #00a5f1;
     --text: #222;
     --gray: #f5f5f5;
     --border: #ddd;
@@ -58,7 +59,7 @@ img {
     background: rgba(255, 255, 255, 0.92);
     backdrop-filter: blur(8px);
     box-shadow: 0 -6px 24px rgba(15, 61, 122, 0.18);
-    border-top: 3px solid var(--yellow);
+    border-top: 3px solid var(--light-blue);
 }
 
 .floating-cta.is-hidden {
@@ -146,7 +147,7 @@ body.menu-open .floating-cta {
     background: #fff;
     position: relative;
     z-index: 500;
-    border-bottom: 3px solid var(--yellow);
+    border-bottom: 3px solid var(--light-blue);
     box-shadow: none;
 }
 
@@ -405,7 +406,7 @@ body.menu-open .floating-cta {
     background:
         repeating-linear-gradient(135deg, rgba(255, 255, 255, 0.06) 0 12px, transparent 12px 24px),
         linear-gradient(170deg, #0a6bc4 0%, var(--blue) 45%, var(--dark-blue) 100%);
-    border-top: 5px solid var(--yellow);
+    border-top: 5px solid var(--light-blue);
 }
 
 .visual-heading::before {
@@ -498,8 +499,8 @@ body.menu-open .floating-cta {
     background:
         repeating-linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0 12px, transparent 12px 24px),
         linear-gradient(170deg, #1a56a0 0%, var(--dark-blue) 100%);
-    border-top: 4px solid var(--yellow);
-    border-bottom: 4px solid var(--yellow);
+    border-top: 4px solid var(--light-blue);
+    border-bottom: 4px solid var(--light-blue);
     box-shadow: 0 8px 20px rgba(15, 61, 122, 0.25);
 }
 
@@ -517,12 +518,12 @@ body.menu-open .floating-cta {
 
 .ad-band::before {
     top: -4px;
-    border-top: 10px solid var(--yellow);
+    border-top: 10px solid var(--light-blue);
 }
 
 .ad-band::after {
     bottom: -4px;
-    border-bottom: 10px solid var(--yellow);
+    border-bottom: 10px solid var(--light-blue);
 }
 
 .ad-band-text {
@@ -620,7 +621,7 @@ body.menu-open .floating-cta {
     font-size: 15px;
     font-weight: 900;
     color: var(--dark-blue);
-    background: #fff;
+    background: #fffb00;
     border: 3px solid var(--yellow);
     border-radius: 999px;
     box-shadow: 0 4px 0 #c9a800;
@@ -1386,7 +1387,7 @@ body.menu-open .floating-cta {
     background:
         repeating-linear-gradient(135deg, rgba(255, 255, 255, 0.06) 0 12px, transparent 12px 24px),
         linear-gradient(170deg, #0a6bc4 0%, var(--blue) 45%, var(--dark-blue) 100%);
-    border-top: 5px solid var(--yellow);
+    border-top: 5px solid var(--light-blue);
 }
 
 .section-title::after {
@@ -1527,7 +1528,7 @@ body.menu-open .floating-cta {
     background:
         repeating-linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0 12px, transparent 12px 24px),
         linear-gradient(170deg, #0a6bc4 0%, var(--blue) 45%, var(--dark-blue) 100%);
-    border-top: 6px solid var(--yellow);
+    border-top: 4px solid var(--light-blue);
 }
 
 .contact .section-title {
@@ -1680,7 +1681,7 @@ body.menu-open .floating-cta {
     background:
         repeating-linear-gradient(135deg, rgba(255, 255, 255, 0.04) 0 12px, transparent 12px 24px),
         linear-gradient(180deg, var(--dark-blue) 0%, #002a55 100%);
-    border-top: 6px solid var(--yellow);
+    border-top: 4px solid var(--light-blue);
 }
 
 .footer-logo {
@@ -1711,7 +1712,7 @@ body.menu-open .floating-cta {
 }
 
 .footer-info a {
-    color: var(--yellow);
+    color: var(--light-blue);
 }
 
 .copyright {
